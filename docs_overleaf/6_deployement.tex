@@ -1,0 +1,13 @@
+\chapter{DEPLOYMENT}
+
+To deploy the Shopify application effectively, both the server-side Laravel structure and the client-side compiled assets need to be hosted and served properly.
+
+\section{Folder Structure \& Build Process}
+\begin{itemize}
+    \item \textbf{Backend Configuration:} The \texttt{.env} file must be populated with production database credentials, application keys, and caching drivers in the production environment.
+    \item \textbf{Frontend Compilation:} The React components located in the \texttt{resources/js} directory must be bundled and minified for production. This is done by running \texttt{npm run build}, which creates static assets in the \texttt{public/build} directory using Vite.
+    \item \textbf{Database Migration:} The production server requires the database tables to be initialized. Running \texttt{php artisan migrate --force} ensures that the users, products, orders, and embeddings tables match the required schema.
+    \item \textbf{Server Configuration:} A web server (e.g., Nginx or Apache) is configured to serve the \texttt{public/} directory where \texttt{index.php} acts as the single entry point. Routing is subsequently handled by Laravel's core router, which simultaneously injects the pre-rendered Inertia.js metadata for the React components to mount to.
+\end{itemize}
+
+

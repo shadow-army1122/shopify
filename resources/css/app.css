@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .glass-panel {
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .glass-panel-darker {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .glass-nav {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .ambient-bg {
+        background: radial-gradient(circle at 10% 20%, rgba(19, 127, 236, 0.08) 0%, transparent 40%),
+            radial-gradient(circle at 90% 80%, rgba(19, 127, 236, 0.05) 0%, transparent 40%);
+        background-color: #f6f7f8;
+        /* fallback/base */
+    }
+
+    @keyframes gentle-sway {
+        0% {
+            transform: rotate(0deg) translateX(0);
+        }
+
+        25% {
+            transform: rotate(1.5deg) translateX(2px);
+        }
+
+        50% {
+            transform: rotate(0deg) translateX(0);
+        }
+
+        75% {
+            transform: rotate(-1.5deg) translateX(-2px);
+        }
+
+        100% {
+            transform: rotate(0deg) translateX(0);
+        }
+    }
+
+    .pendulum-swing {
+        transform-origin: 50% -50px;
+        animation: gentle-sway 6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+    }
+
+    .hanging-nav {
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+}

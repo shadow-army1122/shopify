@@ -1,0 +1,111 @@
+\chapter{TESTING}
+Testing is a crucial part of application development, ensuring that the marketplace runs efficiently, securely, and provides a seamless shopping experience for users. Unlike game development, testing an e-commerce platform focuses heavily on data integrity, API reliability, user access management, and interface responsiveness.
+
+\section{Unit Testing}
+Unit testing focuses on testing individual components of the web application, such as user models, database queries, and utility functions in isolation.
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{|p{1.5cm}|p{2.5cm}|p{4cm}|p{4cm}|c|}
+    \hline
+    \textbf{Test Case ID} & \textbf{Component} & \textbf{Test Description} & \textbf{Expected Result} & \textbf{Status} \\
+    \hline
+    \endfirsthead
+    \hline
+    \textbf{Test Case ID} & \textbf{Component} & \textbf{Test Description} & \textbf{Expected Result} & \textbf{Status} \\
+    \hline
+    \endhead
+    \hline
+    \endfoot
+    \hline
+    \caption{Unit Test Cases for Shopify} \label{tab:unit_tests} \\
+    \endlastfoot
+
+    UT01 & User Authentication & \raggedright Verify login logic with correct and incorrect credentials & \raggedright Returns correct session token or error & Pass \\
+    \hline
+    UT02 & Product Model & \raggedright Ensure product creation correctly formats JSON attributes & \raggedright Product saved with valid JSON schema & Pass \\
+    \hline
+    UT03 & Order Tracking ID & \raggedright Check generation logic for unique 10-character alphanumeric ID & \raggedright A unique, properly formatted ID is returned & Pass \\
+    \end{longtable}
+
+\newpage
+\section{Integration Testing}
+Integration testing ensures that various Laravel controllers correctly interact with the database and send valid properties to the React/Inertia frontend.
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \small
+    \begin{tabular}{|c|p{3cm}|p{3cm}|p{3cm}|c|}
+        \hline
+        \textbf{Test Case ID} & \textbf{Component} & \textbf{Test Description} & \textbf{Expected Result} & \textbf{Status} \\
+        \hline
+        IT01 & Add to Cart API & Verify if adding a product updates the session cart state & Cart count increases and persists & Pass \\
+        \hline
+        IT02 & Embedding Generation & Ensure product description updates trigger background embedding task & Background job dispatched properly & Pass \\
+        \hline
+        IT03 & Seller Middleware & Verify that only sellers can access the AdminProductController routes & Non-sellers receive 403 Forbidden & Pass \\
+        \hline
+    \end{tabular}
+    \caption{Integration Test Cases for Shopify}
+    \label{tab:integration_tests}
+\end{table}
+
+\newpage
+\section{System Testing}
+System testing evaluates the entire application, examining the flow from frontend UI actions to backend processing and database persistence.
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{|c|c|p{4cm}|p{3cm}|c|}
+        \hline
+        \textbf{Test Case ID} & \textbf{Component} & \textbf{Test Description} & \textbf{Expected Result} & \textbf{Status} \\
+        \hline
+        ST01 & Registration Flow & Verify user can register and be redirected to dashboard & User profile created, session active & Pass \\
+        \hline
+        ST02 & Checkout Process & Check entire flow from cart to order confirmation & Order row created, stock deducted & Pass \\
+        \hline
+        ST03 & Product Search & Ensure search returns semantically similar items & Relevant products displayed in UI & Pass \\
+        \hline
+    \end{tabular}
+    \caption{System Test Cases for Shopify}
+    \label{tab:system_tests}
+\end{table}
+
+\newpage
+\section{Regression Testing}
+Regression testing ensures that new feature additions do not break existing components.
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \small
+    \begin{tabular}{|c|c|p{3cm}|p{3cm}|c|}
+        \hline
+        \textbf{Test Case ID} & \textbf{Component} & \textbf{Test Description} & \textbf{Expected Result} & \textbf{Status} \\
+        \hline
+        RT01 & Login Form & \raggedright Ensure new styling didn't break input binding & \raggedright User can still log in normally & Pass \\
+        \hline
+        RT02 & API Responses & \raggedright Check if adding the embeddings table corrupted product queries & \raggedright Products still returned seamlessly & Pass \\
+        \hline
+    \end{tabular}
+    \caption{Regression Test Cases}
+    \label{tab:regression_tests}
+\end{table}
+
+\newpage
+\section{Performance Testing}
+Performance testing measures loading times and database latency to verify optimal user experience.
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{|c|c|p{4cm}|p{3cm}|c|}
+        \hline
+        \textbf{Test Case ID} & \textbf{Component} & \textbf{Test Description} & \textbf{Expected Result} & \textbf{Status} \\
+        \hline
+        PT01 & Page Load (Vite) & Measure JS bundle load time & Initial paint under 2 seconds & Pass \\
+        \hline
+        PT02 & DB Query Time & Measure catalog load query time & Complex queries return under 200ms & Pass \\
+        \hline
+        PT03 & API Latency & Verify backend response time for authenticated routes & Response within 100-300ms & Pass \\
+        \hline
+    \end{tabular}
+    \caption{Performance Test Cases}
+    \label{tab:performance_tests}
+\end{table}
